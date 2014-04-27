@@ -163,6 +163,22 @@
 	$tables['scoreboard']['score'] = array ( 'Field' => 'score', 'Type' => 'int(10) unsigned', 'Null' => 'NO', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
 	$tables['scoreboard']['date_change'] = array ( 'Field' => 'date_change', 'Type' => 'datetime', 'Null' => 'NO', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
 	
+	// for api
+	$tables['users'] = array();
+	$tables['users']['id'] = array ( 'Field' => 'id', 'Type' => 'int(11)', 'Null' => 'NO', 'Key' => 'PRI', 'Default' => NULL, 'Extra' => 'auto_increment', );
+	$tables['users']['uuid'] = array ( 'Field' => 'uuid', 'Type' => 'varchar(255)', 'Null' => 'NO', 'Key' => 'UNI', 'Default' => NULL, 'Extra' => '', );
+	$tables['users']['role'] = array ( 'Field' => 'role', 'Type' => 'int(11)', 'Null' => 'NO', 'Key' => '', 'Default' => '0', 'Extra' => '', );
+	$tables['users']['nick'] = array ( 'Field' => 'nick', 'Type' => 'varchar(30)', 'Null' => 'NO', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
+	$tables['users']['mail'] = array ( 'Field' => 'mail', 'Type' => 'varchar(50)', 'Null' => 'NO', 'Key' => 'UNI', 'Default' => NULL, 'Extra' => '', );
+	$tables['users']['pass'] = array ( 'Field' => 'pass', 'Type' => 'varchar(64)', 'Null' => 'NO', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
+	$tables['users']['activated'] = array ( 'Field' => 'activated', 'Type' => 'int(1)', 'Null' => 'NO', 'Key' => '', 'Default' => '0', 'Extra' => '', );
+	$tables['users']['activation_code'] = array ( 'Field' => 'activation_code', 'Type' => 'varchar(40)', 'Null' => 'NO', 'Key' => '', 'Default' => '', 'Extra' => '', );
+	$tables['users']['json_data'] = array ( 'Field' => 'json_data', 'Type' => 'text', 'Null' => 'YES', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
+	$tables['users']['date_create'] = array ( 'Field' => 'date_create', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => ' CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ', 'Extra' => '', );
+	$tables['users']['date_activated'] = array ( 'Field' => 'date_activated', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => "'0000-00-00 00:00:00'", 'Extra' => '', );
+	$tables['users']['date_last_signup'] = array ( 'Field' => 'date_last_signup', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => "'0000-00-00 00:00:00'", 'Extra' => '', );
+	$tables['users']['deleted'] = array ( 'Field' => 'deleted', 'Type' => "enum('0','1')", 'Null' => 'NO', 'Key' => 'MUL', 'Default' => "'0'", 'Extra' => '', );
+	
 	// $tables['userteams'] = array();
 
 	$db = new fhq_database();
@@ -242,7 +258,7 @@
 		$notnull = '';
 		
 		$extra = $info['Extra'];
-		if ($info['Type'] == 'NO') $notnull = 'NOT NULL';
+		if ($info['Null'] == 'NO') $notnull = 'NOT NULL';
 		$query = "ALTER TABLE `$table` ADD `$column` $type $notnull $extra;";
 		echo "$query = ".$db->query($query)."<br>";
 		
@@ -254,9 +270,7 @@
 	
 	function add_index ($db, $table, $info) {
 		$column = $info['Field'];
-		
 		$index = $info['Key'];
-		
 		$query = '';
 		// add index
 		if ($index == 'MUL')
