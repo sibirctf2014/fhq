@@ -176,7 +176,7 @@
 	$tables['users']['json_data'] = array ( 'Field' => 'json_data', 'Type' => 'text', 'Null' => 'YES', 'Key' => '', 'Default' => NULL, 'Extra' => '', );
 	$tables['users']['date_create'] = array ( 'Field' => 'date_create', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => ' CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ', 'Extra' => '', );
 	$tables['users']['date_activated'] = array ( 'Field' => 'date_activated', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => "'0000-00-00 00:00:00'", 'Extra' => '', );
-	$tables['users']['date_last_signup'] = array ( 'Field' => 'date_last_signup', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => "'0000-00-00 00:00:00'", 'Extra' => '', );
+	$tables['users']['date_last_signin'] = array ( 'Field' => 'date_last_signin', 'Type' => 'timestamp', 'Null' => 'NO', 'Key' => '', 'Default' => "'0000-00-00 00:00:00'", 'Extra' => '', );
 	$tables['users']['deleted'] = array ( 'Field' => 'deleted', 'Type' => "enum('0','1')", 'Null' => 'NO', 'Key' => 'MUL', 'Default' => "'0'", 'Extra' => '', );
 	
 	// $tables['userteams'] = array();

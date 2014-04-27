@@ -64,6 +64,10 @@
 		include dirname(__FILE__)."/db/update_database.php";
 		exit;
 	}
+	else if($content_page == "migrate_users" && $security->isAdmin()) {
+		include dirname(__FILE__)."/users/migrate_users.php";
+		exit;
+	}
 	else if($content_page == "feedback_my")
 	{
 	    $feedback = new fhq_feedback();

@@ -97,6 +97,7 @@ echo '
 					<a class="btn btn-small btn-info" href="javascript:void(0);" onclick="load_content_page(\'add_news\');">Add News</a>
 					<a class="btn btn-small btn-info" href="javascript:void(0);" onclick="load_content_page(\'add_user\');">Add user</a><br><br>
 					System:	<a class="btn btn-small btn-info" href="javascript:void(0);" onclick="load_content_page(\'update_db\');">Update DB</a>
+					<a class="btn btn-small btn-info" href="javascript:void(0);" onclick="load_content_page(\'migrate_users\');">Migrate Users</a>
 					<a class="btn btn-small btn-info" href="javascript:void(0);" onclick="load_content_page2(\'init_scoreboard\');">init scoreboard</a>
 					
 			</td>
