@@ -68,6 +68,10 @@
 		include dirname(__FILE__)."/users/migrate_users.php";
 		exit;
 	}
+	else if($content_page == "test_api" && $security->isAdmin()) {
+		include dirname(__FILE__)."/test_api/page_test_api.php";
+		exit;
+	}
 	else if($content_page == "feedback_my")
 	{
 	    $feedback = new fhq_feedback();
